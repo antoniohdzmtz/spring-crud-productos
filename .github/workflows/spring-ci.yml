@@ -1,0 +1,28 @@
+name: Java CI con Maven
+
+# Disparar el workflow cuando se haga push o PR en la rama main
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Clona el repositorio
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      # 2. Configura Java 17
+      - name: Configurar Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      # 3. Compila y corre las pruebas
+      - name: Compilar y probar con Maven
+        run: mvn clean install
