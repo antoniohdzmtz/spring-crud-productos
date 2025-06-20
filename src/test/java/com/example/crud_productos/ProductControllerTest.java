@@ -33,7 +33,7 @@ public class ProductControllerTest {
         producto.setNombre("Prueba");
         producto.setDescripcion("Producto de prueba");
         producto.setStock(10);
-        producto.setFecha(LocalDate.now());
+        producto.setFecha(new Date());
 
         when(productoService.getAllProducts()).thenReturn(List.of(producto));
 
